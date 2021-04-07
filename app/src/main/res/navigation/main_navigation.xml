@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_drink">
+
+    <fragment
+        android:id="@+id/navigation_drink"
+        android:name="com.ldg.notdrunk.main.drink.DrinkFragment"
+        android:label="@string/title_drink"
+        tools:layout="@layout/fragment_drink" >
+        <action
+            android:id="@+id/action_navigation_drink_to_selectDrinkFragment"
+            app:destination="@id/selectDrinkFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_chart"
+        android:name="com.ldg.notdrunk.main.history.HistoryFragment"
+        android:label="@string/title_chart"
+        tools:layout="@layout/fragment_history"/>
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.ldg.notdrunk.main.notifications.NotificationsFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_notifications"/>
+
+    <dialog
+        android:id="@+id/selectDrinkFragment"
+        android:name="com.ldg.notdrunk.main.drink.DrinkSelectFragment"
+        android:label="SelectDrinkFragment"/>
+
+</navigation>

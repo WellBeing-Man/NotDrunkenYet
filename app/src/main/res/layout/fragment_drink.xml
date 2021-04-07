@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+            <variable
+                name="drinkViewModel"
+                type="com.ldg.notdrunk.main.drink.DrinkViewModel" />
+    </data>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".main.drink.DrinkFragment">
+
+                <TextView
+                    android:id="@+id/tvDrinkKind"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:onClick="@{()->drinkViewModel.onClickSelect()}"
+                    android:paddingStart="5dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="30sp"
+                    app:layout_constraintEnd_toStartOf="@+id/ivDrinkMoveBack"
+                    app:layout_constraintStart_toEndOf="@+id/ivDrinkMoveFront"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="맥주" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDrinkKind">
+
+                    <ImageView
+                        android:id="@+id/ivDrinkPicture"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:contentDescription="@string/drink_image"
+                        android:maxWidth="100dp"
+                        android:maxHeight="170dp"
+                        android:minWidth="100dp"
+                        android:minHeight="170dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_baseline_cloud_download_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_baseline_cloud_download_24" />
+
+                    <TextView
+                        android:id="@+id/tvAlcoholPer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintStart_toEndOf="@+id/ivDrinkPicture"
+                        app:layout_constraintTop_toTopOf="@+id/ivDrinkPicture"
+                        tools:text="4.5%/ml" />
+
+                    <TextView
+                        android:id="@+id/tvAlcoholDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintStart_toStartOf="@+id/tvAlcoholPer"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAlcoholPer"
+                        tools:text="알싸 시원" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCupList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                    tools:itemCount="4">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="@+id/rvCupList"
+                    app:layout_constraintStart_toStartOf="@+id/rvCupList"
+                    app:layout_constraintTop_toBottomOf="@+id/rvCupList">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clCupInformation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tvCupName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="맥주잔" />
+
+                        <TextView
+                            android:id="@+id/tvCupNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tvCupName"
+                            app:layout_constraintStart_toEndOf="@+id/tvCupName"
+                            app:layout_constraintTop_toTopOf="@+id/tvCupName"
+                            tools:text="2 잔" />
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/ivOnDrinkMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:contentDescription="@string/button_status_change"
+                        android:onClick="@{()->drinkViewModel.onDrinkMore()}"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_arrow_upward_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/clCupInformation"
+                        app:layout_constraintStart_toEndOf="@+id/clCupInformation"
+                        app:layout_constraintTop_toTopOf="@+id/clCupInformation" />
+
+                    <ImageView
+                        android:id="@+id/ivOnDrinkLess"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:contentDescription="@string/button_status_change"
+                        android:onClick="@{()->drinkViewModel.onDrinkLess()}"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_arrow_downward_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/clCupInformation"
+                        app:layout_constraintEnd_toStartOf="@+id/clCupInformation"
+                        app:layout_constraintTop_toTopOf="@+id/clCupInformation" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/btDrink"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:onClick="@{()->drinkViewModel.onClickDrinkButton()}"
+                    android:text="@string/drink_02"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/rvCupList"
+                    app:layout_constraintStart_toStartOf="@+id/rvCupList"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+                <ImageView
+                    android:id="@+id/ivDrinkMoveFront"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:contentDescription="@string/button_status_change"
+                    android:onClick="@{()->drinkViewModel.onLastDrink()}"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvDrinkKind"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvDrinkKind"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+                <ImageView
+                    android:id="@+id/ivDrinkMoveBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="50dp"
+                    android:contentDescription="@string/button_status_change"
+                    android:onClick="@{()->drinkViewModel.onNextDrink()}"
+                    android:padding="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvDrinkKind"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvDrinkKind"
+                    app:srcCompat="@drawable/ic_baseline_arrow_forward_24" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+</layout>

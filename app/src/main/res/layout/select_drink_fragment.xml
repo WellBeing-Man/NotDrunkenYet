@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_round_white_12dp"
+  >
+
+    <data>
+            <variable
+                name="drinkViewModel"
+                type="com.ldg.notdrunk.main.drink.DrinkViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".main.drink.DrinkSelectFragment"
+        >
+
+        <Button
+            android:id="@+id/btMixDrink"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/drink_03"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMixLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btMixDrink" >
+
+            <EditText
+                android:id="@+id/etInputMixDrink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/drink_04"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/tvRightChooseDrink"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                tools:text="소주"
+                style="@style/drink_spinner"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etInputMixDrink"
+                tools:itemCount="3" />
+
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/tvLeftChooseDrink"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
+                tools:text="소주"
+                style="@style/drink_spinner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etInputMixDrink"
+                 />
+
+            <EditText
+                android:id="@+id/etRightChooseDrinkPer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Per"
+                android:inputType="numberDecimal"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRightChooseDrink"
+                app:layout_constraintEnd_toStartOf="@+id/tvRightChooseDrink"
+                app:layout_constraintTop_toTopOf="@+id/tvRightChooseDrink" />
+
+            <EditText
+                android:id="@+id/etLeftChooseDrinkPer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Per"
+                android:inputType="numberDecimal"
+                app:layout_constraintBottom_toBottomOf="@+id/tvRightChooseDrink"
+                app:layout_constraintStart_toEndOf="@+id/tvLeftChooseDrink"
+                app:layout_constraintTop_toTopOf="@+id/tvRightChooseDrink" />
+
+            <TextView
+                android:id="@+id/tvVersus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text=":"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/etRightChooseDrinkPer"
+                app:layout_constraintStart_toEndOf="@+id/etLeftChooseDrinkPer"
+                app:layout_constraintTop_toBottomOf="@+id/etInputMixDrink" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDrinkList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clMixLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
