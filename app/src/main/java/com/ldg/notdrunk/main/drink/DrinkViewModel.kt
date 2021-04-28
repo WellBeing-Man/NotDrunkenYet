@@ -196,26 +196,8 @@ class DrinkViewModel(repository: DrinkRepository) : BaseRepositoryViewModel<Drin
      * */
     fun saveHistory() {
         viewModelScope.launch {
-            val makeHistoryAsync:Deferred<DrinkHistory?> =viewModelScope.async {
-                
-                val history:DrinkHistory?=try {
-                val drink = drinkList.value!![drinkIndex.value!!]
-                val cup = cupList.value!![cupIndex.value!!]
-                val curTime =
-                    currentFormatted(TimeFormat.SECOND.format)
-                val drinkLevel=repository.getDrinkLevel()
-                DrinkHistory(
-                    curTime,
-                    drink.drinkName,
-                    cup.volume * drink.alcoholPer!! *  _cupNumber.value!!,
-                    drinkLevel
-                ) }catch (n:NullPointerException){
-                    n.printStackTrace()
-                    null
-                }
-                history
-            }
-            repository.insertHistory(makeHistoryAsync.await())
+            val history= makeCurrentHistory()
+            repository.insertHistory(history)
             _cupNumber.value=1
         }
     }

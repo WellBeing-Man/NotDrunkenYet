@@ -8,13 +8,17 @@ import com.ldg.notdrunk.base.BaseViewModel
 import com.ldg.notdrunk.database.Drink
 import com.ldg.notdrunk.database.DrinkDatabase
 import com.ldg.notdrunk.database.DrinkHistory
+import com.ldg.notdrunk.database.GameHistory
 import com.ldg.notdrunk.repository.DrinkRepository
 import com.ldg.notdrunk.repository.HistoryRepository
 
 class HistoryViewModel(repository: HistoryRepository) : BaseRepositoryViewModel<DrinkDatabase,HistoryRepository>(
     repository
 ) {
-    val historyList: LiveData<List<DrinkHistory>> = repository.history
+    val historyList: LiveData<List<DrinkHistory>> = repository.drinkHistory
+
+    val gameHistory:LiveData<List<GameHistory>> = repository.gameHistory
+
 
 
 }

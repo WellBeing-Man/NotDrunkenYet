@@ -36,7 +36,6 @@ class DrinkRepository (
     }
 
     suspend fun getDrinkLevel(): String {
-        var difference=0;
         var firstGame:GameHistory? = null
         var lastGame:GameHistory? = null
         withContext(Dispatchers.IO){

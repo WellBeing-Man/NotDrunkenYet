@@ -31,6 +31,9 @@ interface DrinkHistoryDao:BaseDao<DrinkHistory> {
 
 @Dao
 interface GameHistoryDao:BaseDao<GameHistory>{
+    @Query("SELECT * FROM game_history")
+    fun getAllGames():LiveData<List<GameHistory>>
+
     @Query("SELECT * FROM game_history where day is :today  ")
     fun getGamesOfDay(today:String):LiveData<List<GameHistory>>
 

@@ -1,5 +1,6 @@
 package com.ldg.notdrunk.game
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,12 +27,16 @@ class MoleGameFragment : MVVMFragment<MoleGameViewModel,FragmentMoleGameBinding>
             viewBinding.modeGameViewModel=viewModel;
             viewBinding.gameBoard.moleGameCallBack=viewModel.moleGameCallBack
 
+
+        //finish activity when game finish
             viewModel.onGameFinished.observe(this.viewLifecycleOwner, Observer { done->
                 if(done){
                     viewModel.onFinishGameDone()
+                    requireActivity().setResult(Activity.RESULT_OK)
                     requireActivity().finish()
                 }
             })
+
         return viewBinding.root
     }
 

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.ldg.notdrunk.base.chart.data.ChartData
 import com.ldg.notdrunk.base.entity.BaseDrink
 import com.ldg.notdrunk.util.convertRatioToNature
 
@@ -40,6 +41,7 @@ data class Drink(
 
     fun percentString() :String = "${alcoholPer?.div(1f)}%/ml"
 }
+
 
 @Entity(tableName = "drink_history")
 data class DrinkHistory(

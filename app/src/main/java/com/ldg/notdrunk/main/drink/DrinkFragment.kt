@@ -57,10 +57,9 @@ class DrinkFragment : MVVMFragment<DrinkViewModel,FragmentDrinkBinding>() {
 
     //ui components set about save
     private fun saveButtonSetting() {
+        //game start
         viewModel.onClickDrinkButton.observe(this.viewLifecycleOwner, Observer { click ->
             if (click) {
-//                viewModel.saveHistory();
-//                viewModel.onClickDrinkButtonFinish()
                 startActivityForResult(Intent(context, GameActivity::class.java),GameActivity.CODE_GAME_DONE)
             }
         })
@@ -121,8 +120,6 @@ class DrinkFragment : MVVMFragment<DrinkViewModel,FragmentDrinkBinding>() {
     //ui components set about cup
     private fun cupListSetting() {
         val adapter=  CupSelectAdapter(viewModel.changeCupCallBack)
-        viewBinding.rvCupList.layoutManager =
-            LinearLayoutManager(context).also { it.orientation = LinearLayoutManager.HORIZONTAL }
        viewBinding.rvCupList.adapter=adapter
 
 
@@ -157,10 +154,10 @@ class DrinkFragment : MVVMFragment<DrinkViewModel,FragmentDrinkBinding>() {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode != Activity.RESULT_OK)
             return
+
         when(requestCode){
             GameActivity.CODE_GAME_DONE->
                 viewModel.saveHistory()
-
 
             else ->
                 return
